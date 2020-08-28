@@ -67,9 +67,11 @@ console.log(oldArray);
 
 const video = ['youtube', 'vimeo', 'rutube'],
       blogs = ['wordpress', 'livejournal', 'blogger'],
-      internet = [...video, ...blogs, 'vk', 'facebook'];
+      internet = [...video, ...blogs, 'vk', 'facebook']; // Оператор разворота развернула всю структуру списком 
 
 console.log(internet);
+
+
 
 function log(a, b, c,) {
     console.log(a);
@@ -79,15 +81,22 @@ function log(a, b, c,) {
 
 const num = [2, 5, 7];
 
-log(...num);
+log(...num); // За счет ... нам выдается конструкция списком
+
+
+
 
 const array = ["a", "b"];
 
-const newAarray = [...array];
+const newAarray = [...array]; // Из ... создали копию array. Вместо метода .slice 
+                                // который мы использовали для копии массива
 
 const q = {
     one: 1,
     two: 2
 };
 
-const newObj = {...q};
+const newObj = {...q}; // Опять с помощью spread-оператора ... создали копию q
+
+
+// Подробно о spread-операторе - https://learn.javascript.ru/rest-parameters-spread-operator

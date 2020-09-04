@@ -9,3 +9,4 @@ const box = document.getElementById('box'),
 box.style.backgroundColor = 'blue';
 
 btns[1].style.borderRadius = '100px';
+

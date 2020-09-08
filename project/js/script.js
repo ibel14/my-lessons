@@ -30,10 +30,13 @@ const movieDB = {
 // promo.remove('promo');
 
 const promo = document.querySelectorAll('.promo__adv img'),
-      genres = document.getElementsByClassName('promo__genre');
+      genres = document.getElementsByClassName('promo__genre'),
+      myBg = document.getElementsByClassName('promo__bg'); 
 
 promo.forEach(i => {
     i.remove();
 });
 
 genres[0].textContent = "Драма";
+
+myBg[0].style.backgroundImage = 'url(img/bg.jpg)';

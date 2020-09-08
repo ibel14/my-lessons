@@ -29,8 +29,11 @@ const movieDB = {
 // const promo = document.getElementsByClassName("promo__adv");
 // promo.remove('promo');
 
-const promo = document.querySelectorAll('.promo__adv img');
+const promo = document.querySelectorAll('.promo__adv img'),
+      genres = document.getElementsByClassName('promo__genre');
 
 promo.forEach(i => {
     i.remove();
 });
+
+genres[0].textContent = "Драма";

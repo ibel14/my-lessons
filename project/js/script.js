@@ -14,16 +14,6 @@
 
 'use strict';
 
-const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против..."
-    ]
-};
-
 // document.getElementsByClassName("promo__adv").remove();
 
 // const promo = document.getElementsByClassName("promo__adv");
@@ -31,7 +21,16 @@ const movieDB = {
 
 const promo = document.querySelectorAll('.promo__adv img'),
       genres = document.getElementsByClassName('promo__genre'),
-      myBg = document.getElementsByClassName('promo__bg'); 
+      myBg = document.getElementsByClassName('promo__bg'), 
+      movieDB = {
+        movies: [
+            "Логан",
+            "Лига справедливости",
+            "Ла-ла лэнд",
+            "Одержимость",
+            "Скотт Пилигрим против..."
+        ]
+    };
 
 promo.forEach(i => {
     i.remove();

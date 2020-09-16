@@ -12,49 +12,108 @@
 
 5) Добавить нумерацию выведенных фильмов */
 
-'use strict';
 
-const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против..."
-    ]
-};
+
+/* Задания на урок: #33
+
+1) Реализовать функционал, что после заполнения формы и нажатия кнопки "Подтвердить" - 
+новый фильм добавляется в список. Страница не должна перезагружаться.
+Новый фильм должен добавляться в movieDB.movies.
+Для получения доступа к значению input - обращаемся к нему как input.value;
+P.S. Здесь есть несколько вариантов решения задачи, принимается любой, но рабочий.
+
+2) Если название фильма больше, чем 21 символ - обрезать его и добавить три точки
+
+3) При клике на мусорную корзину - элемент будет удаляться из списка (сложно)
+
+4) Если в форме стоит галочка "Сделать любимым" - в консоль вывести сообщение: 
+"Добавляем любимый фильм"
+
+5) Фильмы должны быть отсортированы по алфавиту */
 
 // document.getElementsByClassName("promo__adv").remove();
 
 // const promo = document.getElementsByClassName("promo__adv");
 // promo.remove('promo');
 
-const promo = document.querySelectorAll('.promo__adv img'),
-      genres = document.getElementsByClassName('promo__genre'),
-      myBg = document.getElementsByClassName('promo__bg'),
-      moviesList = document.querySelector('.promo__interactive-list');
 
+'use strict';
 
-promo.forEach(i => {
-    i.remove();
+document.addEventListener('DOMContentLoaded',  () => { // Код внутри сработает когда дом структура будет загружена 
+    // может быть вместо document - window.add..... разницы никакой нет
+    const movieDB = {
+        movies: [
+            "Логан",
+            "Лига справедливости",
+            "Ла-ла лэнд",
+            "Одержимость",
+            "Скотт Пилигрим против..."
+        ]
+    };
+    
+    const promo = document.querySelectorAll('.promo__adv img'),
+          genres = document.getElementsByClassName('promo__genre'),
+          myBg = document.getElementsByClassName('promo__bg'),
+          moviesList = document.querySelector('.promo__interactive-list'),
+          addForm = document.querySelector('form.add'),
+          addInput = addForm.querySelector('.adding__input'),
+          checkbox = addForm.querySelector('[type="checkbox"]');
+    
+    
+    addForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // отменили стандартное поведение браузера
+
+        let newFilm = addInput.value;
+        const favorite = checkbox.checked;
+
+        if (newFilm) {
+
+            if (newFilm.length > 21) {
+                newFilm = `${newFilm.substring(0, 22)}...`;
+            }
+
+            movieDB.movies.push(newFilm);
+            sortArr(movieDB.movies);
+    
+            createMovieList(movieDB.movies, moviesList);
+        }
+
+        event.target.reset();
+    });
+    
+    const deleteAdv = (arr) => {
+        arr.forEach(i => {
+            i.remove();
+        });
+    };
+    
+    const makeChanges = () => {
+        genres[0].textContent = "Драма";
+    
+        myBg[0].style.backgroundImage = 'url(img/bg.jpg)';
+    };
+
+    const sortArr = (arr) => {
+        arr.sort();
+    };
+
+    function createMovieList(films, parent) {
+        parent.innerHTML = "";
+        
+        films.forEach((movie, i) => {
+            parent.innerHTML += `
+            <li class="promo__interactive-item">${i + 1} ${movie}
+            <div class="delete"></div>
+             </li>
+            `;
+        });
+    }
+
+    deleteAdv(promo);
+    makeChanges();
+    sortArr(movieDB.movies);
+    createMovieList(movieDB.movies, moviesList);
+
 });
 
-genres[0].textContent = "Драма";
 
-myBg[0].style.backgroundImage = 'url(img/bg.jpg)';
-
-moviesList.innerHTML = "";
-
-// movieDB.forEach(iteam => {
-//     movies.sort(); // Код курильщика
-// });
-
-movieDB.movies.sort(); // Код здорового человека
-
-movieDB.movies.forEach((movie, i) => {
-    moviesList.innerHTML += `
-    <li class="promo__interactive-item">${i + 1} ${movie}
-    <div class="delete"></div>
-     </li>
-    `;
-});

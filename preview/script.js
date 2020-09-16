@@ -69,6 +69,3 @@ link.addEventListener('click', function(event) {
     console.log(event.target);
 });
 
-
-// ОШИБКА КОТОРЫЕ ДОПУСКАЮТ МНОГИЕ НОВИЧКИ
-

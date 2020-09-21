@@ -114,3 +114,63 @@ function showFirstMessage(text) { // Внутри функции можно за
 
 showFirstMessage(); // Вызвали функцию
 console.log(maybe); // обращается к глобальной переменной, так как она ничего не знает о локальной
+
+// функция может вернуть ключевое значение при помощи return
+
+function calc(a, b) {
+    return (a + b); // можем использовать функцию с различными аргументами, тем самым автоматизируем процессы
+}
+
+console.log(calc(1, 6));
+console.log(calc(1534, 10));
+console.log(calc(7, 2));
+
+// в return еще есть возвращение значения наружу
+
+function ret() {
+    let num = 50;
+
+    // какой-то код
+    // какой-то код
+    // какой-то код
+    // какой-то код
+    // какой-то код
+    // какой-то код
+    // какой-то код
+
+    return num; // во внешний код наша функция возвращает значение локальной переменной
+
+}
+
+const anotherNum = ret(); // вывели результат из локальной переменной
+console.log(anotherNum);
+
+// function declaration - создается до начала выполнения скрипта, можно вызвать перед объявлением
+// пример = function foo() { код }
+
+// function expression - создается только когда доходит поток кода, можно вызвать только после объявления 
+// пример = let foo = function() { код }
+
+const logger = function() {
+    console.log("Hello");
+};
+
+logger();
+
+// стрелочные функции - не имеет своего контекста (this) 
+// () =>
+
+// Стрелочные функции
+
+const numb = (a, b) => a + b;
+
+// Callback функции
+
+function learnJS(lang, callback) {
+    console.log(`Я учу: ${lang}`);
+    callback(); // благодаря callback мы сохраняем последовательность функции
+}
+
+learnJS('JavaScript', function() {
+    console.log('Я прошел этот урок');
+});

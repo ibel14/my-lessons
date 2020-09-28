@@ -23,5 +23,25 @@
 
 // <p id="elem" class="www ggg zzz"></p> в HTML
 
-let elem = document.querySelector('#elem');
-elem.classList.toggle('zzz'); // класс zzz удалился благодаря методу .toggle
+// let elem = document.querySelector('#elem');
+// elem.classList.toggle('zzz'); // класс zzz удалился благодаря методу .toggle
+
+// Делегирование событий
+
+const wrapper = document.querySelector('.btn-block');
+
+// wrapper.addEventListener('click', (event) => {
+//     if (event.target && event.target.classList.contains('blue')) {
+//         console.log('Ninja!');
+//     }
+// });
+
+wrapper.addEventListener('click', (event) => {
+    if (event.target && event.target.tagName == "BUTTON") {
+        console.log('Ninja!');
+    }
+});
+
+const btn = document.createElement('button');
+btn.classList.add("red");
+wrapper.append(btn);

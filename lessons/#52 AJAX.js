@@ -46,10 +46,10 @@ inputRub.addEventListener('input', () => { // делаем обработчик 
 //     request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 //     request.send();
 
-//     request.addEventListener('load', () => { // с load команда срабатывает один раз когда запрос уже готов
+//     request.addEventListener('load', () => { // *** с load команда срабатывает один раз когда запрос уже готов
 //         if (request.status === 200) { // удалили request.readyState === 4 &&  - потому что он из-за load
 //             console.log(request.response); // не остлеживается
-//             const data = JSON.parse(request.response); // Статус 200 оставили так как может быть 404 и т.д.
+//             const data = JSON.parse(request.response); // Статус 200 оставили так как может быть 404 и т.д. ***
 //             inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
 //         } else {
 //             inputUsd.value = "Что-то пошло не так";

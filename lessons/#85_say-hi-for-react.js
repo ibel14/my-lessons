@@ -68,3 +68,36 @@ const coords = {x, y,
 coords.calcSq();
 
 console.log(coords);
+
+// *** Деструктуризация 
+
+const user = {
+    name: {
+        first: 'Sam',
+        second: 'Smith'
+    },
+    pass: 'qwerty',
+    rights: 'user'
+};
+
+const {name: {first, second}, pass, rights} = user;
+
+console.log(first, second);
+
+// ***
+
+function connect({
+    host = 'localhost',
+    port = 3000,
+    user = 'default'} = {}) {
+        console.log(`host: ${host}, port: ${port}, user: ${user}`)
+    }
+
+connect()
+
+// ***
+
+const numbers = [[3, 5], [6, 6]];
+
+const [[a, b], [c, d]] = numbers;
+console.log(a, b, c, d)
